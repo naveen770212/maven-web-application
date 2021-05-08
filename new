@@ -1,0 +1,29 @@
+node {
+    
+    def mavenhome = tool name : "maven" 
+    
+    stage ( 'git login' )
+    {
+        
+        
+        git credentialsId: 'giitupdated', url: 'https://github.com/naveen770212/maven-web-application.git'
+    
+    }
+    stage ( ' maven build' )
+    {
+        sh "${mavenhome}/bin/mvn clean package"
+    }
+    
+    stage ( 'mvn sonar' )
+    
+    {
+        sh "${mavenhome}/bin/mvn sonar:sonar"
+    }
+    
+    stage ( 'upload artifacts into nexus ' )
+    
+    {
+        sh "${mavenhome}/bin/mvn deploy"
+    }
+    
+}
