@@ -29,11 +29,12 @@ node {
 	stage  ( ' tomcat' )
 	{
 	
-	sshagent(['f6321c2b-702e-4031-8e16-0522a87ce474']) {
+	sshagent(['f125433b-5aac-4b5e-bc6d-353bf61909b5']) {
     // some block
-	sh "scp StrictHostKeyChecking=no target/maven-web-application.war    root@34.122.201.99:/opt/webapps"
-	 
-}
+
+	sh "scp StrictHostKeyChecking=no target/maven-web-application.war    gcpkey@34.122.201.99:/opt/tomcat9/webapps"
+}	 
+
 	
 	}
 	
