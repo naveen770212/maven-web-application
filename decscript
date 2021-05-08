@@ -11,7 +11,7 @@ maven 'maven'
 
 stages {
 
-	stage( 'git )
+	stage( 'git' )
 	{
 	steps{
 	git credentialsId: 'giitupdated', url: 'https://github.com/naveen770212/maven-web-application.git'
