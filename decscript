@@ -1,0 +1,51 @@
+pipeline {
+
+agent any 
+
+tools {
+maven 'maven'
+
+}
+
+
+
+stages {
+
+	stage( 'git )
+	{
+	steps{
+	git credentialsId: 'giitupdated', url: 'https://github.com/naveen770212/maven-web-application.git'
+	}
+	}
+	
+	stage( 'maven build' )
+	{
+	steps {
+	
+	sh " mvn clean package"
+	}
+	
+	}
+	stage( 'sonar' ){
+	
+	steps{
+	sh " mvn sonar:sonar"
+	
+	}
+	}
+	
+	stage( ' nexus ' )	{
+	steps {
+	sh "mvn deploy"
+	
+	}
+	}
+	
+	stage( 'deplottomcat' ) {
+steps {
+
+deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://34.122.201.99:8080/')], contextPath: null, war: '**/maven-web-application.war'
+}
+	}
+}
+}
