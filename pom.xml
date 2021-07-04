@@ -103,8 +103,8 @@
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>wallmart-snapshot/</name>
-	      <url>http://34.72.60.175:8081/repository/wallmart-snapshot/</url>
+	      <name>maven-snapshots/</name>
+	      <url>http://13.232.159.189:8081/repository/maven-snapshots/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
